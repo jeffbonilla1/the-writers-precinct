@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Writers Precinct — Research Like a Pro. Write Like You've Been There.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --parchment: #f8f4ee;
+    --cream: #fdf9f4;
+    --warm-mid: #e8e0d4;
+    --accent-gold: #b8860b;
+    --accent-rust: #9b4a1e;
+    --accent-teal: #2a6b6e;
+    --accent-burgundy: #6b2737;
+    --text-body: #3a3530;
+    --text-muted: #7a7068;
+    --precinct-color: #2a3f5f;
+    --er-color: #2a5f4a;
+    --armory-color: #5f3a2a;
+    --bench-color: #4a3a6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--parchment);
+    letter-spacing: 0.5px;
+  }
+  .nav-logo span { color: var(--accent-gold); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: #b0a898;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--parchment); }
+  .nav-cta {
+    background: var(--accent-gold);
+    color: var(--ink) !important;
+    padding: 8px 20px;
+    border-radius: 3px;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 100px 40px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(184,134,11,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(42,107,110,0.08) 0%, transparent 60%);
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-gold);
+  }
+  .hero-sub {
+    font-family: 'Crimson Pro', serif;
+    font-size: 22px;
+    color: #c8bfb4;
+    max-width: 640px;
+    margin: 0 auto 16px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .hero-sub2 {
+    font-size: 15px;
+    color: #8a8078;
+    max-width: 540px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+  }
+  .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent-gold);
+    color: var(--ink);
+    padding: 16px 36px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #d4a017; transform: translateY(-1px); }
+  .btn-secondary {
+    border: 1px solid #4a4540;
+    color: #c8bfb4;
+    padding: 16px 36px;
+    border-radius: 3px;
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: #8a8078; }
+
+  .hero-trust {
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid #2a2520;
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+  .trust-item { text-align: center; }
+  .trust-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--accent-gold);
+    font-weight: 700;
+  }
+  .trust-label { font-size: 12px; color: #8a8078; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+  /* TOOLS SECTION */
+  .section { padding: 96px 40px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 56px;
+    max-width: 600px;
+  }
+
+  /* TOOL CARDS */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 2px;
+    background: var(--warm-mid);
+    border: 1px solid var(--warm-mid);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .tool-card {
+    background: var(--cream);
+    padding: 48px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .tool-card:hover { background: #faf6f0; }
+  .tool-card.coming-soon { opacity: 0.65; }
+
+  .tool-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .tag-live { background: #e8f4ec; color: #2a5f4a; }
+  .tag-soon { background: #f0edf8; color: #4a3a6b; }
+
+  .tool-persona {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .tool-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tool-tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .tool-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-body);
+    margin-bottom: 28px;
+  }
+  .tool-features {
+    list-style: none;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tool-features li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-left: 20px;
+    position: relative;
+  }
+  .tool-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-size: 12px;
+  }
+  .tool-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--warm-mid);
+  }
+  .tool-price { font-size: 13px; color: var(--text-muted); }
+  .tool-price strong { font-size: 22px; color: var(--ink); display: block; }
+  .tool-btn {
+    padding: 10px 24px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .btn-precinct { background: var(--precinct-color); color: white; }
+  .btn-er { background: var(--er-color); color: white; }
+  .btn-armory { background: var(--armory-color); color: white; }
+  .btn-bench { background: var(--warm-mid); color: var(--text-muted); cursor: default; }
+  .btn-precinct:hover { background: #3a5070; }
+  .btn-er:hover { background: #357060; }
+  .btn-armory:hover { background: #7a4535; }
+
+  .tool-accent-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .bar-precinct { background: var(--precinct-color); }
+  .bar-er { background: var(--er-color); }
+  .bar-armory { background: var(--armory-color); }
+  .bar-bench { background: var(--bench-color); }
+
+  /* BUNDLE SECTION */
+  .bundle-section {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 96px 40px;
+  }
+  .bundle-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .bundle-inner .section-eyebrow { color: var(--accent-gold); }
+  .bundle-inner .section-title { color: var(--parchment); }
+  .bundle-inner .section-sub { color: #8a8078; margin: 0 auto 56px; }
+
+  .bundle-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: #2a2520;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .bundle-card {
+    background: #1e1a17;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .bundle-card.featured {
+    background: #252018;
+    border-top: 3px solid var(--accent-gold);
+  }
+  .bundle-badge {
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--accent-gold);
+    color: var(--ink);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 0 0 4px 4px;
+  }
+  .bundle-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--parchment);
+    margin-bottom: 8px;
+  }
+  .bundle-tools {
+    font-size: 12px;
+    color: #6a6058;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .bundle-price-old {
+    font-size: 14px;
+    color: #4a4540;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .bundle-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .bundle-price-note { font-size: 12px; color: #6a6058; margin-bottom: 28px; }
+  .bundle-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bundle-features li {
+    font-size: 13px;
+    color: #9a9088;
+    padding-left: 18px;
+    position: relative;
+  }
+  .bundle-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-size: 11px;
+  }
+  .bundle-btn {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .bundle-btn-primary { background: var(--accent-gold); color: var(--ink); }
+  .bundle-btn-primary:hover { background: #d4a017; }
+  .bundle-btn-outline { border: 1px solid #3a3530; color: #8a8078; }
+  .bundle-btn-outline:hover { border-color: #5a5048; }
+
+  .bundle-guarantee {
+    font-size: 14px;
+    color: #6a6058;
+    font-style: italic;
+  }
+  .bundle-guarantee span { color: var(--accent-gold); }
+
+  /* TOOLKIT SECTION */
+  .toolkit-section { background: var(--parchment); padding: 96px 40px; }
+  .toolkit-inner { max-width: 1100px; margin: 0 auto; }
+
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .toolkit-left { }
+  .toolkit-preview {
+    background: var(--cream);
+    border: 1px solid var(--warm-mid);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .toolkit-preview-header {
+    background: var(--ink);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toolkit-preview-header span {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    font-weight: 700;
+  }
+  .toolkit-lock {
+    font-size: 11px;
+    color: #6a6058;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .toolkit-items { padding: 8px 0; }
+  .toolkit-item {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--warm-mid);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+  }
+  .toolkit-item:last-child { border-bottom: none; }
+  .toolkit-item-left { }
+  .toolkit-item-num {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .toolkit-item-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .toolkit-item-preview {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    max-width: 300px;
+    line-height: 1.5;
+  }
+  .toolkit-item-lock {
+    font-size: 18px;
+    color: var(--warm-mid);
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .toolkit-item.unlocked .toolkit-item-lock { color: var(--accent-gold); }
+
+  .toolkit-cta-box {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 32px;
+    border-radius: 6px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .toolkit-cta-box p {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #9a9088;
+    margin-bottom: 20px;
+  }
+
+  /* ABOUT SECTION */
+  .about-section { padding: 96px 40px; background: var(--cream); }
+  .about-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-left { }
+  .about-img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(145deg, #2a2520, #3a3028);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #4a4540;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    gap: 8px;
+  }
+  .about-img-placeholder span { font-size: 40px; }
+  .about-right { }
+  .about-right .section-eyebrow { margin-bottom: 12px; }
+  .about-right .section-title { font-size: 32px; margin-bottom: 24px; }
+  .about-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 20px;
+  }
+  .about-body em {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .about-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .credential-tag {
+    background: var(--parchment);
+    border: 1px solid var(--warm-mid);
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--parchment); padding: 96px 40px; }
+  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .testimonial {
+    background: var(--cream);
+    border: 1px solid var(--warm-mid);
+    padding: 32px;
+    border-radius: 4px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--warm-mid);
+    position: absolute;
+    top: 8px;
+    left: 24px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin-bottom: 24px;
+    padding-top: 20px;
+  }
+  .testimonial-author { font-size: 13px; font-weight: 700; color: var(--ink); }
+  .testimonial-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* FAQ */
+  .faq-section { padding: 96px 40px; background: var(--cream); }
+  .faq-inner { max-width: 720px; margin: 0 auto; }
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+  .faq-item {
+    background: var(--parchment);
+    border: 1px solid var(--warm-mid);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 20px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .faq-q::after { content: '+'; font-size: 20px; color: var(--accent-gold); font-weight: 300; }
+  .faq-a {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--ink);
+    padding: 96px 40px;
+    text-align: center;
+  }
+  .final-cta .section-eyebrow { color: var(--accent-gold); }
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--parchment);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .final-cta h2 em { font-style: italic; color: var(--accent-gold); }
+  .final-cta p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    color: #8a8078;
+    font-style: italic;
+    margin-bottom: 48px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #100e0c;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #4a4540;
+    margin-bottom: 16px;
+  }
+  .footer-logo span { color: var(--accent-gold); }
+  .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: #3a3530; text-decoration: none; }
+  .footer-links a:hover { color: #6a6058; }
+  footer p { font-size: 12px; color: #3a3530; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1 { animation: fadeUp 0.7s ease forwards; }
+  .hero-sub { animation: fadeUp 0.7s 0.15s ease forwards; opacity: 0; }
+  .hero-sub2 { animation: fadeUp 0.7s 0.25s ease forwards; opacity: 0; }
+  .hero-ctas { animation: fadeUp 0.7s 0.35s ease forwards; opacity: 0; }
+  .hero-trust { animation: fadeUp 0.7s 0.5s ease forwards; opacity: 0; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 64px 24px; }
+    .section { padding: 64px 24px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .bundle-cards { grid-template-columns: 1fr; }
+    .toolkit-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .hero-trust { gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">The <span>Writers</span> Precinct</div>
+  <div class="nav-links">
+    <a href="#tools">The Tools</a>
+    <a href="#toolkit">Writer's Toolkit</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#" class="nav-cta">Get Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">The Writers Precinct — A Suite of AI Research Tools for Genre Fiction Writers</div>
+  <h1>Research Like a Pro.<br><em>Write Like You've Been There.</em></h1>
+  <p class="hero-sub">Get answers to your scene from someone who actually lived it — not a search engine.</p>
+  <p class="hero-sub2">Three specialized AI research tools, each powered by a character with real-world expertise. Built by a retired cop, published author, and produced songwriter who learned everything the hard way.</p>
+  <div class="hero-ctas">
+    <a href="#tools" class="btn-primary">Explore the Tools</a>
+    <a href="#pricing" class="btn-secondary">See Bundle Pricing</a>
+  </div>
+  <div class="hero-trust">
+    <div class="trust-item">
+      <div class="trust-num">4</div>
+      <div class="trust-label">Genre Specialists</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">8</div>
+      <div class="trust-label">Toolkit Sections</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">Zero</div>
+      <div class="trust-label">Chance of Being Flagged</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">1</div>
+      <div class="trust-label">Retired Cop Behind It All</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section" id="tools">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Tools</div>
+    <h2 class="section-title">Four experts. One subscription.</h2>
+    <p class="section-sub">Each tool is powered by a character with genuine expertise in their domain — not a generic AI assistant.</p>
+
+    <div class="tools-grid">
+
+      <!-- THE PRECINCT -->
+      <div class="tool-card">
+        <div class="tool-accent-bar bar-precinct"></div>
+        <span class="tool-tag tag-live">● Live Now</span>
+        <div class="tool-persona">Powered by Detective Dale Hawthorne</div>
+        <div class="tool-name" style="color: var(--precinct-color)">The Precinct</div>
+        <div class="tool-tagline">Write crime scenes that actually hold up.</div>
+        <p class="tool-desc">Ask scene and legal-procedure questions and get answers shaped to your genre, your jurisdiction, at the moment you're trying to write. A veteran homicide detective answers — gritty, honest, and dead-on accurate.</p>
+        <ul class="tool-features">
+          <li>Police procedures by jurisdiction</li>
+          <li>Crime scene investigation details</li>
+          <li>Legal procedures and court process</li>
+          <li>Three response modes: clinical, fast-prose, or veteran voice</li>
+        </ul>
+        <div class="tool-footer">
+          <div class="tool-price">
+            <strong>$19.99</strong>
+            One-time · 100 consults
+          </div>
+          <a href="https://asktheprecinct.com" class="tool-btn btn-precinct">Visit The Precinct →</a>
+        </div>
+      </div>
+
+      <!-- THE ER -->
+      <div class="tool-card">
+        <div class="tool-accent-bar bar-er"></div>
+        <span class="tool-tag tag-live">● Live Now</span>
+        <div class="tool-persona">Powered by Dr. David Newman</div>
+        <div class="tool-name" style="color: var(--er-color)">The ER</div>
+        <div class="tool-tagline">Write medical scenes with real clinical authority.</div>
+        <p class="tool-desc">A holistic physician walks you through symptoms, diagnoses, procedures, and the ethical dilemmas that make medical thrillers crackle. Get the details right without a medical degree — or a trip down a flagged search rabbit hole.</p>
+        <ul class="tool-features">
+          <li>ER / Trauma & Surgery / ICU procedures</li>
+          <li>Forensic pathology & cause of death detail</li>
+          <li>Toxicology, poisons & drug interactions</li>
+          <li>Holistic approaches & alternative medicine angles</li>
+        </ul>
+        <div class="tool-footer">
+          <div class="tool-price">
+            <strong>$19.99</strong>
+            One-time · 100 consults
+          </div>
+          <a href="https://the-er.netlify.app" class="tool-btn btn-er">Visit The ER →</a>
+        </div>
+      </div>
+
+      <!-- THE ARMORY -->
+      <div class="tool-card">
+        <div class="tool-accent-bar bar-armory"></div>
+        <span class="tool-tag tag-live">● Live Now</span>
+        <div class="tool-persona">Powered by Jonathan Baxter — The Brit</div>
+        <div class="tool-name" style="color: var(--armory-color)">The Armory</div>
+        <div class="tool-tagline">Your weapons research. Handled by someone who knows how to use them.</div>
+        <p class="tool-desc">A former assassin — Jonathan Baxter — answers your questions about firearms, blades, tactical gear, and combat with the calm authority of someone who's been there. Your action scenes will feel real because the details are.</p>
+        <ul class="tool-features">
+          <li>Firearms: calibers, recoil, reload times, sounds</li>
+          <li>Blades, tactical gear & military ordnance</li>
+          <li>Covert ops, assassination methods & tradecraft</li>
+          <li>Drones, tech weapons & emerging threats</li>
+        </ul>
+        <div class="tool-footer">
+          <div class="tool-price">
+            <strong>$19.99</strong>
+            One-time · 100 consults
+          </div>
+          <a href="https://ask-the-armory.netlify.app" class="tool-btn btn-armory">Visit The Armory →</a>
+        </div>
+      </div>
+
+      <!-- THE BENCH (COMING SOON) -->
+      <div class="tool-card coming-soon">
+        <div class="tool-accent-bar bar-bench"></div>
+        <span class="tool-tag tag-soon">Coming Soon</span>
+        <div class="tool-persona">Powered by a character yet to be revealed</div>
+        <div class="tool-name" style="color: var(--bench-color)">The Bench</div>
+        <div class="tool-tagline">The legal thriller's missing resource.</div>
+        <p class="tool-desc">A courtroom authority is coming to The Writers Precinct. Get civil and criminal procedure right, understand jurisdiction, depositions, discovery, and the strategies attorneys actually use to win — and lose — cases.</p>
+        <ul class="tool-features">
+          <li>Civil & criminal court procedure</li>
+          <li>Attorney ethics & strategy</li>
+          <li>Jurisdiction rules & case law</li>
+          <li>Depositions, motions & trial structure</li>
+        </ul>
+        <div class="tool-footer">
+          <div class="tool-price">
+            <strong>Coming</strong>
+            Join the waitlist
+          </div>
+          <a href="#" class="tool-btn btn-bench">Notify Me</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUNDLE PRICING -->
+<section class="bundle-section" id="pricing">
+  <div class="bundle-inner">
+    <div class="section-eyebrow">Simple Pricing</div>
+    <h2 class="section-title" style="color: var(--parchment); margin-bottom: 12px;">One tool or all three.<br>You decide.</h2>
+    <p class="section-sub" style="margin: 0 auto 56px;">Every option includes the full Writer's Toolkit for your genre — a complete convention guide included in every purchase.</p>
+
+    <div class="bundle-cards">
+
+      <!-- SINGLE TOOL -->
+      <div class="bundle-card">
+        <div class="bundle-name">Single Tool</div>
+        <div class="bundle-tools">The Precinct<br>— or — The ER<br>— or — The Armory</div>
+        <div class="bundle-price-old">&nbsp;</div>
+        <div class="bundle-price">$19.99</div>
+        <div class="bundle-price-note">one-time · 100 consults · yours to keep</div>
+        <ul class="bundle-features">
+          <li>One specialized AI tool</li>
+          <li>Genre toolkit PDF — yours forever</li>
+          <li>All three response modes</li>
+          <li>No subscription required</li>
+        </ul>
+        <a href="#tools" class="bundle-btn bundle-btn-outline">Choose a Tool</a>
+      </div>
+
+      <!-- FULL MEMBERSHIP (FEATURED) -->
+      <div class="bundle-card featured">
+        <div class="bundle-badge">Best Value</div>
+        <div class="bundle-name">Full Membership</div>
+        <div class="bundle-tools">All Tools · Unlimited · Future Tools Included</div>
+        <div class="bundle-price-old">&nbsp;</div>
+        <div class="bundle-price">$29.99</div>
+        <div class="bundle-price-note">per month · cancel anytime</div>
+        <ul class="bundle-features">
+          <li>Every tool — now and future</li>
+          <li>Unlimited consults across all tools</li>
+          <li>All genre toolkit PDFs included</li>
+          <li>The Bench free on launch</li>
+          <li>Cancel anytime — no pressure</li>
+        </ul>
+        <a href="#" class="bundle-btn bundle-btn-primary">Start Membership — $29.99/mo</a>
+      </div>
+
+      <!-- FREE TIER -->
+      <div class="bundle-card">
+        <div class="bundle-name">Try It Free</div>
+        <div class="bundle-tools">Any tool<br>&nbsp;</div>
+        <div class="bundle-price-old">&nbsp;</div>
+        <div class="bundle-price" style="font-size: 32px; padding-top: 8px;">Free</div>
+        <div class="bundle-price-note">3 questions · no credit card</div>
+        <ul class="bundle-features">
+          <li>3 free questions on any tool</li>
+          <li>Full response quality — no limits</li>
+          <li>No account required to start</li>
+          <li>Upgrade anytime</li>
+        </ul>
+        <a href="#tools" class="bundle-btn bundle-btn-outline">Try a Question Free</a>
+      </div>
+
+    </div>
+
+    <p class="bundle-guarantee">🔒 Secure checkout via Stripe. <span>First 3 questions are always free</span> — no credit card needed to try.</p>
+  </div>
+</section>
+
+<!-- WRITER'S TOOLKIT -->
+<section class="toolkit-section" id="toolkit">
+  <div class="toolkit-inner">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+
+      <div>
+        <div class="section-eyebrow">Included with Every Purchase</div>
+        <h2 class="section-title">The Writer's Toolkit.<br>Built from real experience.</h2>
+        <p style="font-size: 16px; line-height: 1.8; color: var(--text-muted); margin-bottom: 24px;">This is what most writers spend years accumulating through rejection letters, expensive writing classes, and painful revision notes. We put it all in one place — genre-specific, and built into your subscription.</p>
+        <p style="font-size: 16px; line-height: 1.8; color: var(--text-muted); margin-bottom: 32px;"><strong style="color: var(--ink);">ChatGPT doesn't have this. The Writers Precinct does.</strong> The knowledge came from real-world experience as a published author, retired law enforcement officer, and produced songwriter. That's the differentiator.</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+          <li style="font-size: 15px; color: var(--text-body); padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-gold); font-weight: 700;">→</span>
+            One toolkit per genre — tailored to each tool
+          </li>
+          <li style="font-size: 15px; color: var(--text-body); padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-gold); font-weight: 700;">→</span>
+            Unlocked inside your dashboard after purchase
+          </li>
+          <li style="font-size: 15px; color: var(--text-body); padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-gold); font-weight: 700;">→</span>
+            Static reference — no AI tokens, always available
+          </li>
+          <li style="font-size: 15px; color: var(--text-body); padding-left: 24px; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--accent-gold); font-weight: 700;">→</span>
+            Updated as the genre evolves
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="toolkit-preview">
+          <div class="toolkit-preview-header">
+            <span>Crime Fiction Toolkit — Preview</span>
+            <div class="toolkit-lock">🔒 Full access after purchase</div>
+          </div>
+          <div class="toolkit-items">
+            <div class="toolkit-item unlocked">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 01</div>
+                <div class="toolkit-item-title">Tropes That Work & Tropes That Don't</div>
+                <div class="toolkit-item-preview">Genre-specific trope libraries. What readers expect — and how to subvert it satisfyingly.</div>
+              </div>
+              <div class="toolkit-item-lock">→</div>
+            </div>
+            <div class="toolkit-item">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 02</div>
+                <div class="toolkit-item-title">Story Structure for Crime Thrillers</div>
+                <div class="toolkit-item-preview">Beat sheets applied specifically to crime fiction. Different from a romance. Different from sci-fi.</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+            <div class="toolkit-item">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 03</div>
+                <div class="toolkit-item-title">POV Guide</div>
+                <div class="toolkit-item-preview">When to use first person vs. third. What crime readers expect.</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+            <div class="toolkit-item">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 04</div>
+                <div class="toolkit-item-title">Genre Conventions</div>
+                <div class="toolkit-item-preview">Fair play mysteries, procedural accuracy, detective archetypes. What breaks the contract.</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+            <div class="toolkit-item">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 05</div>
+                <div class="toolkit-item-title">Common Mistakes Editors Flag</div>
+                <div class="toolkit-item-preview">Head hopping, info dumps, passive voice, on-the-nose dialogue. The stuff that gets manuscripts rejected.</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+            <div class="toolkit-item">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 06</div>
+                <div class="toolkit-item-title">The Twist vs. The Cheat</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+            <div class="toolkit-item">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 07</div>
+                <div class="toolkit-item-title">Character Archetypes</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+            <div class="toolkit-item" style="border-bottom: none;">
+              <div class="toolkit-item-left">
+                <div class="toolkit-item-num">Section 08</div>
+                <div class="toolkit-item-title">Dialogue Rules</div>
+              </div>
+              <div class="toolkit-item-lock">🔒</div>
+            </div>
+          </div>
+        </div>
+        <div class="toolkit-cta-box">
+          <p>The full toolkit unlocks inside your dashboard the moment you purchase any tool.</p>
+          <a href="#pricing" class="btn-primary" style="font-size: 14px; padding: 12px 28px;">Unlock the Toolkit →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="about-img-placeholder">
+        <span>📷</span>
+        Jeff Bonilla<br>Photo Here
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="section-eyebrow">Why This Exists</div>
+      <h2 class="section-title">Built by someone who actually knows.</h2>
+      <p class="about-body"><em>"I write crime fiction myself and I love having an experienced voice that I can turn to in the middle of a paragraph for the details of a crime scene, or legalities, without breaking stride. That's why I built The Precinct."</em></p>
+      <p class="about-body">Jeff Bonilla is a retired law enforcement officer, #1 Amazon Hot New Release author, BMI songwriter, and reality TV creator with six optioned series. The Writers Precinct suite is built on decades of real-world experience that most genre writers spend years trying to piece together from scattered research.</p>
+      <p class="about-body">The knowledge isn't AI-generated from Wikipedia. It came from cases, courtrooms, crime scenes, and operating rooms. That's the difference.</p>
+      <div class="about-credentials">
+        <span class="credential-tag">Retired Law Enforcement</span>
+        <span class="credential-tag">#1 Amazon Author</span>
+        <span class="credential-tag">BMI Songwriter</span>
+        <span class="credential-tag">Reality TV Creator</span>
+        <span class="credential-tag">6 Optioned Series</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-eyebrow">Trusted by Writers</div>
+    <h2 class="section-title">Proof from people who've used it.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-text">The Precinct goes deeper than anything I've found. The kind of procedural detail that makes a scene feel real, not just plausible.</p>
+        <div class="testimonial-author">Beth Crawford</div>
+        <div class="testimonial-role">Crime Fiction Writer</div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">There's no other AI tool that has genre-specific convention guides built in. ChatGPT doesn't have this. The Precinct does.</p>
+        <div class="testimonial-author">Will Pickens</div>
+        <div class="testimonial-role">FBI Consultant & Retired LEO</div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Real police policies and equipment, not just generic info. This is what writers need — specific, accurate, and immediately usable.</p>
+        <div class="testimonial-author">Charles Moss</div>
+        <div class="testimonial-role">California Highway Patrol & Novelist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="section-eyebrow" style="text-align: center;">FAQ</div>
+    <h2 class="section-title" style="text-align: center; margin-bottom: 8px;">What people ask first.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Is this legal advice? Medical advice?</div>
+        <div class="faq-a">No. The Writers Precinct is a research tool for fiction writers. The responses are designed to help you write authentic, believable scenes — not to replace an attorney, physician, or other professional.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why not just use ChatGPT?</div>
+        <div class="faq-a">ChatGPT gives you generic answers from a generic assistant. The Writers Precinct gives you answers from a character with real expertise, calibrated to your genre and jurisdiction. The difference shows in your manuscript.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I ask follow-up questions?</div>
+        <div class="faq-a">Each tool is built to answer one question at a time — it doesn't carry on a conversation. If you want to dig deeper, just reframe your next question to include the relevant context from the previous response. It's a research tool, not a chat window — and once you get used to that rhythm, it's actually faster.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will my searches get flagged?</div>
+        <div class="faq-a">No. That's one of the key reasons The Writers Precinct exists. Searching "how to strangle someone" or "what caliber exits cleanly through drywall" on Google raises flags. Here, it's just research.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's included in the Writer's Toolkit?</div>
+        <div class="faq-a">Eight sections covering tropes, story structure, POV, genre conventions, common editor flags, the twist vs. the cheat, character archetypes, and dialogue rules — all tailored to your specific genre. It unlocks in your dashboard the moment you purchase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-eyebrow">Stop Guessing</div>
+  <h2>Your scene deserves<br><em>the right answer.</em></h2>
+  <p>The first 3 questions are always free. No credit card required.</p>
+  <div class="hero-ctas" style="margin-bottom: 0;">
+    <a href="#tools" class="btn-primary" style="font-size: 16px; padding: 18px 44px;">Try a Question Free</a>
+    <a href="#pricing" class="btn-secondary" style="font-size: 16px; padding: 18px 44px;">See Bundle Pricing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The <span>Writers</span> Precinct</div>
+  <div class="footer-links">
+    <a href="#">The Precinct</a>
+    <a href="#">The ER</a>
+    <a href="#">The Armory</a>
+    <a href="#">The Bench (Coming Soon)</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </div>
+  <p>© 2026 Jeff Bonilla · The Writers Precinct · All rights reserved.</p>
+</footer>
+
+</body>
+</html>
