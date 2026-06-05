@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Killer Nashville Exclusive — The Writers Precinct</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+:root {
+  --bg: #0e0e0f;
+  --surface: #161618;
+  --surface2: #1e1e21;
+  --border: #2a2a2e;
+  --border-bright: #3d3d44;
+  --text: #e8e6e0;
+  --text-dim: #b0aea8;
+  --text-muted: #8a8880;
+  --accent: #c8782a;
+  --accent-dim: rgba(200,120,42,0.15);
+  --green: #4a9e6b;
+  --red: #b84040;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Serif', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.logo span {
+  color: var(--text-dim);
+  font-size: 0.65rem;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-top: 2px;
+}
+
+.kn-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+main {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3.2rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+h1 em {
+  color: var(--accent);
+  font-style: italic;
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 2.4rem;
+}
+
+.subhead {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-style: italic;
+}
+
+.offer-box {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.offer-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.offer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.offer-item:last-child { margin-bottom: 0; }
+
+.offer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.offer-text {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.offer-text strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.tool-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.tool-name {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.tool-desc {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.tool-card.coming {
+  border-style: dashed;
+  opacity: 0.7;
+}
+
+.form-section {
+  background: var(--surface);
+  border: 1px solid var(--border-bright);
+  border-radius: 8px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.field input:focus { border-color: var(--accent); }
+.field input::placeholder { color: var(--text-muted); }
+
+.submit-btn {
+  width: 100%;
+  background: var(--accent);
+  color: #120b05;
+  border: none;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  padding: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 4px;
+}
+
+.submit-btn:hover { opacity: 0.88; }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.fine-print {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 32px 0;
+}
+
+.success-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.success-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.success-body {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.code-display {
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.error-msg {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--red);
+  margin-top: 8px;
+  display: none;
+}
+
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+footer span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+footer a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.4rem; }
+  h1 em { font-size: 1.8rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    The Writers Precinct
+    <span>Expert Research Tools for Thriller Writers</span>
+  </div>
+  <div class="kn-badge">Killer Nashville 2026</div>
+</header>
+
+<main>
+  <div class="eyebrow">Killer Nashville Exclusive</div>
+  <h1>Research Like a Pro.<br><em>Write Like You've Been There.</em></h1>
+  <p class="subhead">Four expert AI consultants built for thriller and genre fiction writers. Enter below for a chance to win — and get your exclusive discount code instantly.</p>
+
+  <div class="offer-box">
+    <div class="offer-title">What You Get</div>
+    <div class="offer-item">
+      <div class="offer-dot"></div>
+      <div class="offer-text"><strong>Raffle entry</strong> — one winner receives 3 months of full membership free. Winner announced after Killer Nashville.</div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-dot"></div>
+      <div class="offer-text"><strong>Instant discount code</strong> — every entrant receives code KN2026 for 50% off your first month. That is $14.99 instead of $29.99.</div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-dot"></div>
+      <div class="offer-text"><strong>Full membership</strong> includes all four tools, unlimited consults, all genre toolkit PDFs, and every future tool — now and when they launch.</div>
+    </div>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-label">The Precinct</div>
+      <div class="tool-name">Crime & Procedure</div>
+      <div class="tool-desc">Detective Dale Hawthorne. 20 years on homicide.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-label">The ER</div>
+      <div class="tool-name">Medical Research</div>
+      <div class="tool-desc">Dr. David Newman M.D. Trauma surgeon. Brutally accurate.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-label">The Armory</div>
+      <div class="tool-name">Weapons & Tactics</div>
+      <div class="tool-desc">Jonathan "The Brit" Baxter. Ex-SAS. Former MI6.</div>
+    </div>
+    <div class="tool-card coming">
+      <div class="tool-label">The Gavel — Coming Soon</div>
+      <div class="tool-name">Legal Research</div>
+      <div class="tool-desc">Victoria Mills, Esq. Trial attorney. Ruthless. Brilliant.</div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-title">Enter the Raffle</div>
+    <div id="formArea">
+      <div class="field">
+        <label for="nameInput">Your Name</label>
+        <input type="text" id="nameInput" placeholder="First and last name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="emailInput">Email Address</label>
+        <input type="email" id="emailInput" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="submitRaffle()">Enter Raffle & Get My Discount Code</button>
+      <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
+      <p class="fine-print">Code KN2026 expires August 31, 2026. Limited to 500 redemptions. One raffle entry per person. No purchase necessary to enter.</p>
+    </div>
+    <div class="success-state" id="successState">
+      <div class="success-icon">✓</div>
+      <div class="success-title">You're In.</div>
+      <p class="success-body">Check your inbox — your exclusive discount code is on its way. Use it anytime before August 31st.</p>
+      <div class="code-display">KN2026</div>
+      <p class="fine-print">50% off your first month at thewritersprecinct.com<br>Good luck in the raffle. Winner announced after Killer Nashville.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Jeff Bonilla · The Writers Precinct</span>
+  <a href="https://thewritersprecinct.com" target="_blank">Explore the Full Suite →</a>
+</footer>
+
+<script>
+async function submitRaffle() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  errorMsg.style.display = 'none';
+
+  if (!name || !email) {
+    errorMsg.textContent = 'Please enter your name and email address.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errorMsg.textContent = 'Please enter a valid email address.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+
+  try {
+    const res = await fetch('/.netlify/functions/kn-raffle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      document.getElementById('formArea').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    } else {
+      throw new Error(data.error || 'Submission failed');
+    }
+  } catch (err) {
+    errorMsg.textContent = 'Something went wrong. Please try again or email jeff@asktheprecinct.com.';
+    errorMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enter Raffle & Get My Discount Code';
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') submitRaffle();
+});
+</script>
+
+</body>
+</html>
