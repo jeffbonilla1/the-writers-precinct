@@ -98,13 +98,14 @@
     position: relative;
     overflow: hidden;
   }
- .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(...);
-}
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(184,134,11,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(42,107,110,0.08) 0%, transparent 60%);
+  }
   .hero-eyebrow {
     font-size: 15px;
     letter-spacing: 3px;
@@ -1296,37 +1297,6 @@
     <div style="background:var(--ink);border-radius:8px;padding:36px 40px;text-align:center;">
       <p style="font-family:'Crimson Pro',serif;font-style:italic;font-size:19px;color:#9a9088;margin-bottom:24px;">Everything above. One subscription. Cancel anytime.</p>
       <a href="https://buy.stripe.com/bJe8wPdr1avO6Mj9p6dAk05" style="display:inline-block;background:var(--accent-gold);color:var(--ink);padding:16px 40px;border-radius:3px;font-weight:700;font-size:15px;text-decoration:none;letter-spacing:0.5px;">Start Full Membership — $29.99/mo</a>
-    </div>
-  </div>
-</section>
-
-<!-- RESPONSE MODES -->
-<section style="background:var(--parchment);padding:80px 40px;border-top:1px solid var(--warm-mid);">
-  <div style="max-width:900px;margin:0 auto;">
-    <div class="section-eyebrow" style="text-align:center;">How You Receive the Answer</div>
-    <h2 class="section-title" style="text-align:center;margin-bottom:12px;">Three response modes. You choose.</h2>
-    <p style="text-align:center;color:var(--text-muted);font-size:16px;max-width:520px;margin:0 auto 52px;font-family:'Crimson Pro',serif;font-style:italic;">Every tool lets you dial in not just what you learn — but how you receive it.</p>
-
-    <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
-
-      <div style="background:#fff;border:1px solid var(--warm-mid);border-top:4px solid var(--accent-gold);border-radius:10px;padding:32px 28px;flex:1;min-width:240px;max-width:270px;">
-        <div style="font-size:28px;margin-bottom:12px;">📋</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:10px;">Full Brief</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Comprehensive. Structured. Detailed. Charts, timelines, procedure, and facts — the full picture laid out clearly. Best when you need to understand something deeply before you write it.</p>
-      </div>
-
-      <div style="background:#fff;border:1px solid var(--warm-mid);border-top:4px solid var(--accent-teal);border-radius:10px;padding:32px 28px;flex:1;min-width:240px;max-width:270px;">
-        <div style="font-size:28px;margin-bottom:12px;">✍️</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:10px;">Scene Ready</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Conversational and narrative-friendly. No jargon, no charts — just the information shaped the way a story flows. Best when you're mid-scene and need the answer to land naturally on the page.</p>
-      </div>
-
-      <div style="background:#fff;border:1px solid var(--warm-mid);border-top:4px solid var(--accent-rust);border-radius:10px;padding:32px 28px;flex:1;min-width:240px;max-width:270px;">
-        <div style="font-size:28px;margin-bottom:12px;">🎙️</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:10px;">Character Voice</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">The expert speaks directly to you — in first person, from lived experience. Raw, unfiltered, and unforgettable. Hawthorne. Dr. Newman. The Brit. Best when you want the answer to feel like a conversation with someone who's actually been there.</p>
-      </div>
-
     </div>
   </div>
 </section>
