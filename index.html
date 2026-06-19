@@ -764,10 +764,31 @@
   <h1>Research Like a Pro.<br><em>Write Like You've Been There.</em></h1>
   <p class="hero-sub">Get answers to your scene from someone who actually lived it — not a search engine.</p>
   <p class="hero-sub2">Four expert consultants, each with real-world experience in their field. Built by a Law Enforcement Officer, published author, and TV writer who learned everything the hard way.</p>
+  <div class="hero-ask-wrap" style="max-width:680px;margin:0 auto 20px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+      <textarea
+        id="hubAskInput"
+        rows="1"
+        placeholder="Ask Detective Hawthorne anything... e.g. &quot;How long does it take to bleed out from a femoral artery?&quot;"
+        style="flex:1;min-width:260px;background:rgba(255,255,255,0.04);border:1px solid #3a342c;border-radius:8px;color:var(--parchment);padding:14px 16px;font-family:'Crimson Pro',serif;font-size:16px;resize:none;line-height:1.4;"
+        onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendToPrecinct();}"
+      ></textarea>
+      <button onclick="sendToPrecinct()" class="btn-primary" style="white-space:nowrap;">Ask Hawthorne →</button>
+    </div>
+    <div style="font-size:12px;color:#6a6058;margin-top:8px;">First 3 questions are free. No account needed.</div>
+  </div>
   <div class="hero-ctas">
-    <a href="#tools" class="btn-primary">Explore the Tools</a>
+    <a href="#tools" class="btn-secondary">Explore the Tools</a>
     <a href="#pricing" class="btn-secondary">See Bundle Pricing</a>
   </div>
+  <script>
+    function sendToPrecinct() {
+      const inp = document.getElementById('hubAskInput');
+      const q = inp.value.trim();
+      const url = 'https://app.asktheprecinct.com/' + (q ? '?q=' + encodeURIComponent(q) : '');
+      window.location.href = url;
+    }
+  </script>
   <div class="hero-trust">
     <div class="trust-item">
       <div class="trust-num">4</div>
@@ -782,8 +803,8 @@
       <div class="trust-label">Chance of Being Flagged</div>
     </div>
     <div class="trust-item">
-      <div class="trust-num">1</div>
-      <div class="trust-label">Retired Cop Behind It All</div>
+      <div class="trust-num">EPUB</div>
+      <div class="trust-label">Conversion Included</div>
     </div>
   </div>
 </section>
@@ -880,7 +901,7 @@
 <section class="section" id="tools">
   <div class="section-inner">
     <div class="section-eyebrow">The Tools</div>
-    <h2 class="section-title">Four experts. One subscription.</h2>
+    <h2 class="section-title">Four experts.</h2>
     <p class="section-sub">Each tool is powered by a character with genuine expertise in their domain — not a generic AI assistant.</p>
 
     <div class="tools-grid">
@@ -1337,6 +1358,10 @@
         <div class="faq-q">What's included in the Writer's Toolkit?</div>
         <div class="faq-a">Eight sections covering tropes, story structure, POV, genre conventions, common editor flags, the twist vs. the cheat, character archetypes, and dialogue rules — all tailored to your specific genre. It unlocks in your dashboard the moment you purchase.</div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q">Does it answer literally anything?</div>
+        <div class="faq-a">No. The experts are built for fiction writing — procedure, forensics, tactics, legal process. Questions aimed at real-world harm rather than scene research get declined.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1344,7 +1369,7 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <div class="section-eyebrow">Stop Guessing</div>
-  <h2>Your scene deserves<br><em>the right answer.</em></h2>
+  <h2>Still not sure?<br><em>Ask something you'd be hesitant to type into Google.</em></h2>
   <p>The first 3 questions are always free. No credit card required.</p>
   <div class="hero-ctas" style="margin-bottom: 0;">
     <a href="#tools" class="btn-primary" style="font-size: 16px; padding: 18px 44px;">Try a Question Free</a>
