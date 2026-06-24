@@ -786,7 +786,10 @@
     function sendToPrecinct() {
       const inp = document.getElementById('hubAskInput');
       const q = inp.value.trim();
-      const url = 'https://app.asktheprecinct.com/' + (q ? '?q=' + encodeURIComponent(q) : '');
+      let url = 'https://app.asktheprecinct.com/' + (q ? '?q=' + encodeURIComponent(q) : '');
+      if (window.location.search) {
+        url += (q ? '&' : '?') + window.location.search.slice(1);
+      }
       window.location.href = url;
     }
   </script>
@@ -1385,6 +1388,22 @@ document.querySelectorAll('.faq-q').forEach(q => {
     answer.style.display = isOpen ? 'none' : 'block';
   });
 });
+</script>
+<script>
+(function(){
+  var qs = window.location.search;
+  if (!qs) return;
+  var domains = ['app.asktheprecinct.com','asktheer.com','askthearmory.com','askthegavel.com'];
+  document.querySelectorAll('a[href]').forEach(function(a){
+    try {
+      var url = new URL(a.getAttribute('href'), window.location.href);
+      if (domains.indexOf(url.hostname.replace(/^www\./,'')) !== -1) {
+        url.search = qs;
+        a.href = url.toString();
+      }
+    } catch(e) {}
+  });
+})();
 </script>
 </body>
 </html>
