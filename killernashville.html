@@ -209,6 +209,21 @@ h1 em {
   opacity: 0.7;
 }
 
+.tool-card {
+  display: block;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.tool-card:hover {
+  border-color: var(--accent);
+}
+
+.logo-link {
+  text-decoration: none;
+  display: block;
+}
+
 .form-section {
   background: var(--surface);
   border: 1px solid var(--border-bright);
@@ -370,10 +385,12 @@ footer a:hover { color: var(--accent); }
 <body>
 
 <header>
-  <div class="logo">
-    The Writers Precinct
-    <span>Expert Research Tools for Thriller Writers</span>
-  </div>
+  <a href="https://thewritersprecinct.com" target="_blank" class="logo-link">
+    <div class="logo">
+      The Writers Precinct
+      <span>Expert Research Tools for Thriller Writers</span>
+    </div>
+  </a>
   <div class="kn-badge">Killer Nashville 2026</div>
 </header>
 
@@ -399,26 +416,26 @@ footer a:hover { color: var(--accent); }
   </div>
 
   <div class="tools-grid">
-    <div class="tool-card">
+    <a href="https://app.asktheprecinct.com" target="_blank" class="tool-card">
       <div class="tool-label">The Precinct</div>
       <div class="tool-name">Crime & Procedure</div>
       <div class="tool-desc">Detective Dale Hawthorne. 20 years on homicide.</div>
-    </div>
-    <div class="tool-card">
+    </a>
+    <a href="https://asktheer.com" target="_blank" class="tool-card">
       <div class="tool-label">The ER</div>
       <div class="tool-name">Medical Research</div>
       <div class="tool-desc">Dr. David Newman M.D. Trauma surgeon. Brutally accurate.</div>
-    </div>
-    <div class="tool-card">
+    </a>
+    <a href="https://askthearmory.com" target="_blank" class="tool-card">
       <div class="tool-label">The Armory</div>
       <div class="tool-name">Weapons & Tactics</div>
       <div class="tool-desc">Jonathan "The Brit" Baxter. Ex-SAS. Former MI6.</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-label">The Gavel </div>
+    </a>
+    <a href="https://askthegavel.com" target="_blank" class="tool-card">
+      <div class="tool-label">The Gavel</div>
       <div class="tool-name">Legal Research</div>
       <div class="tool-desc">Victoria Mills, Esq. Trial attorney. Ruthless. Brilliant.</div>
-    </div>
+    </a>
   </div>
 
   <div class="form-section">
