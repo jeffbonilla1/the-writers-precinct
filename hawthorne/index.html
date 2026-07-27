@@ -256,6 +256,7 @@
       const question = document.getElementById('askInput').value.trim();
       const url = new URL(APP_URL);
       if (question) url.searchParams.set('q', encodeURIComponent(question));
+      url.searchParams.set('format', 'veteran');
       // Forward any Meta click id / UTM params so downstream tracking still fires
       const incoming = new URLSearchParams(window.location.search);
       incoming.forEach((value, key) => url.searchParams.set(key, value));
