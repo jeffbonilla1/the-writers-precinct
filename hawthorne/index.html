@@ -4,6 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Writers Precinct — Ask Detective Hawthorne</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BF2F3Y8YZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BF2F3Y8YZ');
+  gtag('config', 'AW-18085846918');
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1312214863949606');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
   :root {
     --bg-deep: #0b0e14;
@@ -278,6 +306,19 @@
       // Forward any Meta click id / UTM params so downstream tracking still fires
       const incoming = new URLSearchParams(window.location.search);
       incoming.forEach((value, key) => url.searchParams.set(key, value));
+
+      // Track the landing-page click-through distinctly from the app's own
+      // 'Lead' event (which fires only once a question is actually submitted)
+      if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'HawthorneLandingClick', { has_question: !!question });
+      }
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'landing_cta_click', {
+          page: 'hawthorne',
+          has_question: !!question
+        });
+      }
+
       window.location.href = url.toString();
     }
 
