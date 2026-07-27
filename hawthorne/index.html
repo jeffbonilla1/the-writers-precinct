@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Writers Precinct — Ask Detective Hawthorne</title>
+<style>
+  :root {
+    --bg-deep: #0b0e14;
+    --bg-panel: #12161f;
+    --gold: #c9a24b;
+    --gold-bright: #e0bc6a;
+    --text-main: #eef0f3;
+    --text-dim: #93999f;
+    --tape-yellow: #f2c200;
+    --hairline: rgba(255,255,255,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Crime-tape hairline at very top, doubles as brand mark, not decoration */
+  .tape-strip {
+    width: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--tape-yellow),
+      var(--tape-yellow) 22px,
+      #111 22px,
+      #111 44px
+    );
+    height: 10px;
+    opacity: 0.9;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 560px;
+    padding: 48px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(34px, 8vw, 52px);
+    line-height: 1.06;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+
+  h1 .soft {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-dim);
+    font-size: 0.5em;
+    margin-top: 10px;
+    letter-spacing: 0;
+  }
+
+  .subhead {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #c7cbd1;
+    max-width: 440px;
+    margin-bottom: 34px;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 6px rgba(201,162,75,0.08), 0 20px 40px rgba(0,0,0,0.5);
+    margin-bottom: 16px;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .cred-line {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+  }
+
+  .cred-line strong {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .ask-panel {
+    width: 100%;
+    background: var(--bg-panel);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.35);
+  }
+
+  .ask-input {
+    width: 100%;
+    background: #0e1119;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+    color: var(--text-main);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    resize: none;
+    min-height: 64px;
+  }
+
+  .ask-input::placeholder {
+    color: #565c64;
+    font-style: italic;
+  }
+
+  .ask-cta {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: #1a1406;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,75,0.35); }
+    50% { box-shadow: 0 0 0 8px rgba(201,162,75,0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ask-cta { animation: none; }
+  }
+
+  .fine-print {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 18px;
+  }
+
+  .fine-print strong { color: var(--gold); }
+
+  .quote-block {
+    margin-top: 30px;
+    max-width: 420px;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .quote-block p {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #d7dae0;
+    margin-bottom: 10px;
+  }
+
+  .quote-block span {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  footer {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #4a4f56;
+    padding-bottom: 28px;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="tape-strip"></div>
+
+  <div class="wrap">
+    <div class="eyebrow">The Writers Precinct</div>
+
+    <h1>
+      You're guessing.<br>Don't.
+      <span class="soft">It's 3am. The evidence, the sequence, the detail — ask before you write another word.</span>
+    </h1>
+
+    <div class="photo-frame">
+      <img src="https://thewritersprecinct.com/Detective_Hawthorne.jpg" alt="Detective Dale Hawthorne">
+    </div>
+
+    <div class="cred-line"><strong>Det. Dale Hawthorne</strong> — 20 Years Homicide. Ask him anything.</div>
+
+    <div class="ask-panel">
+      <textarea id="askInput" class="ask-input" placeholder="Ask about your crime scene..."></textarea>
+      <button id="askCta" class="ask-cta">Ask Hawthorne — Free →</button>
+    </div>
+
+    <div class="fine-print"><strong>First 3 questions free.</strong> No account needed.</div>
+
+    <div class="quote-block">
+      <p>"The Precinct is exactly the kind of research tool I needed to bring real authenticity to my novels."</p>
+      <span>— Beth Crawford, Thriller Author</span>
+    </div>
+  </div>
+
+  <footer>THE WRITERS PRECINCT &nbsp;·&nbsp; WRITE LIKE YOU'VE BEEN THERE</footer>
+
+  <script>
+    const APP_URL = 'https://app.asktheprecinct.com';
+
+    function goToApp() {
+      const question = document.getElementById('askInput').value.trim();
+      const url = new URL(APP_URL);
+      if (question) url.searchParams.set('q', encodeURIComponent(question));
+      // Forward any Meta click id / UTM params so downstream tracking still fires
+      const incoming = new URLSearchParams(window.location.search);
+      incoming.forEach((value, key) => url.searchParams.set(key, value));
+      window.location.href = url.toString();
+    }
+
+    document.getElementById('askCta').addEventListener('click', goToApp);
+    document.getElementById('askInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        goToApp();
+      }
+    });
+  </script>
+
+</body>
+</html>
