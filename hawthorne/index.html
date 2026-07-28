@@ -171,10 +171,23 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
     box-shadow: 0 24px 48px rgba(0,0,0,0.35);
   }
 
+  .sample-q {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--gold);
+    text-align: left;
+  }
+
+  .sample-q em {
+    color: #c7cbd1;
+    font-style: italic;
+  }
+
   .ask-input {
     width: 100%;
-    background: #0e1119;
-    border: 1px solid var(--hairline);
+    background: #1a1f2c;
+    border: 1.5px solid rgba(201,162,75,0.45);
     border-radius: 10px;
     padding: 16px;
     color: var(--text-main);
@@ -182,6 +195,13 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
     font-size: 15px;
     resize: none;
     min-height: 64px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .ask-input:focus {
+    outline: none;
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 3px rgba(201,162,75,0.15);
   }
 
   .ask-input::placeholder {
@@ -290,6 +310,7 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
     <div class="cred-line"><strong>Det. Dale Hawthorne</strong> — 20 Years Homicide. Ask him anything.</div>
 
     <div class="ask-panel">
+      <div class="sample-q">→ Try: <em>"How long does it take a dead body to decompose?"</em></div>
       <textarea id="askInput" class="ask-input" placeholder="Ask about your crime scene..."></textarea>
       <button id="askCta" class="ask-cta">Ask Hawthorne — Free →</button>
     </div>
