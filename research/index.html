@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Files — Real Research for Crime Fiction Writers | The Writers Precinct</title>
+<meta name="description" content="Real questions from crime fiction writers, answered by Detective Dale Hawthorne. Financial investigations, cybercrime, procedure, and more.">
+
+<style>
+  :root {
+    --bg-deep: #0b0e14;
+    --bg-panel: #12161f;
+    --gold: #c9a24b;
+    --gold-bright: #e0bc6a;
+    --text-main: #eef0f3;
+    --text-dim: #93999f;
+    --tape-yellow: #f2c200;
+    --hairline: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tape-strip {
+    width: 100%;
+    background: repeating-linear-gradient(-45deg, var(--tape-yellow), var(--tape-yellow) 22px, #111 22px, #111 44px);
+    height: 10px;
+    opacity: 0.9;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 640px;
+    padding: 40px 24px 64px;
+  }
+  .eyebrow-link {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    color: var(--gold);
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(30px, 6vw, 42px);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .subhead {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+  .case-card {
+    display: block;
+    background: var(--bg-panel);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .case-card .q {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .case-card .snippet {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .case-card .arrow {
+    color: var(--gold-bright);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .cta-panel {
+    margin-top: 40px;
+    background: var(--bg-panel);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 26px 24px;
+    text-align: center;
+  }
+  .cta-panel p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: #1a1406;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  footer {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #4a4f56;
+    padding: 40px 0 28px;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="tape-strip"></div>
+  <div class="wrap">
+    <a href="https://thewritersprecinct.com" class="eyebrow-link">← The Writers Precinct</a>
+    <h1>Case Files</h1>
+    <p class="subhead">Real questions from crime fiction writers, answered by Detective Dale Hawthorne. No guessing, no generic Google answers — just what a 20-year homicide detective actually knows.</p>
+
+    <a href="/research/parking-meter-hacking.html" class="case-card">
+      <div class="q">Can a villain hack parking meters to steal credit card data?</div>
+      <div class="snippet">It's been done — San Francisco, Los Angeles, Chicago. The real story isn't the hack, it's the six-month gap before anyone notices.</div>
+      <span class="arrow">Read Hawthorne's answer →</span>
+    </a>
+
+    <a href="/research/banking-investigation.html" class="case-card">
+      <div class="q">Do banks cooperate with a financial investigation, or do you need a warrant?</div>
+      <div class="snippet">Subpoenas, SARs, and the informal ask — how detectives actually build a financial case before they have solid proof.</div>
+      <span class="arrow">Read Hawthorne's answer →</span>
+    </a>
+
+    <div class="cta-panel">
+      <p>Have a question of your own? Ask Hawthorne — first 3 questions free, no account needed.</p>
+      <a href="https://thewritersprecinct.com/hawthorne" class="cta-btn">Ask Hawthorne — Free →</a>
+    </div>
+  </div>
+
+  <footer>THE WRITERS PRECINCT &nbsp;·&nbsp; WRITE LIKE YOU'VE BEEN THERE</footer>
+</body>
+</html>
