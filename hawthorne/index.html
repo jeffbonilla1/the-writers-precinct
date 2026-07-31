@@ -241,6 +241,90 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
 
   .fine-print strong { color: var(--gold); }
 
+  .divider-or {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 28px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 420px;
+  }
+  .divider-or::before,
+  .divider-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  .toolkit-panel {
+    width: 100%;
+    background: var(--bg-panel);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px;
+    text-align: left;
+  }
+
+  .toolkit-panel h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .toolkit-panel p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .toolkit-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .toolkit-email {
+    flex: 1;
+    min-width: 160px;
+    background: #1a1f2c;
+    border: 1.5px solid var(--hairline);
+    border-radius: 10px;
+    padding: 14px;
+    color: var(--text-main);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+  }
+
+  .toolkit-email:focus {
+    outline: none;
+    border-color: var(--gold-bright);
+  }
+
+  .toolkit-cta {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    background: transparent;
+    color: var(--gold-bright);
+    border: 1.5px solid var(--gold);
+    border-radius: 10px;
+    padding: 14px 18px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .toolkit-cta:hover {
+    background: rgba(201,162,75,0.1);
+  }
+
   .quote-block {
     margin-top: 30px;
     max-width: 420px;
@@ -317,6 +401,17 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
 
     <div class="fine-print"><strong>First 3 questions free.</strong> No account needed.</div>
 
+    <div class="divider-or">or</div>
+
+    <div class="toolkit-panel">
+      <h3>Not ready to ask yet?</h3>
+      <p>Get the free Crime Fiction Toolkit — plus two of Hawthorne's real answers to real writer questions, so you can see what he does before you ask your own.</p>
+      <form class="toolkit-form" id="toolkitForm">
+        <input type="email" class="toolkit-email" id="toolkitEmail" placeholder="your@email.com" required>
+        <button type="submit" class="toolkit-cta">Send Me the Toolkit →</button>
+      </form>
+    </div>
+
     <div class="quote-block">
       <p>"The Precinct is exactly the kind of research tool I needed to bring real authenticity to my novels."</p>
       <span>— Beth Crawford, Thriller Author</span>
@@ -359,6 +454,40 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
         goToApp();
       }
     });
+
+    // Toolkit email capture
+    const toolkitForm = document.getElementById('toolkitForm');
+    if (toolkitForm) {
+      toolkitForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('toolkitEmail').value.trim();
+        const btn = toolkitForm.querySelector('.toolkit-cta');
+        const originalText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        try {
+          const res = await fetch('/.netlify/functions/submit-toolkit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+          const data = await res.json();
+
+          if (data.success) {
+            if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'crime_fiction_toolkit' });
+            if (typeof gtag !== 'undefined') gtag('event', 'toolkit_signup', { page: 'hawthorne' });
+            toolkitForm.innerHTML = '<p style="color:#e0bc6a; font-family: Helvetica Neue, Arial, sans-serif; font-size:14px;">Check your inbox — the toolkit\'s on its way.</p>';
+          } else {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }
+        } catch (err) {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }
+      });
+    }
   </script>
 
 </body>
