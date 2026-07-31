@@ -49,22 +49,6 @@ exports.handler = async function(event, context) {
             </a>
           </div>
 
-          <div style="border-top: 1px solid #2a2a2e; padding-top: 24px; margin-bottom: 24px;">
-            <div style="font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #93999f; margin-bottom: 14px;">
-              WHILE YOU'RE HERE — TWO REAL ANSWERS
-            </div>
-            <p style="font-size: 14px; color: #d7dae0; line-height: 1.6; margin-bottom: 20px;">
-              <strong style="color:#eef0f3;">Q: Do banks cooperate with a financial investigation, or do you need a warrant?</strong><br><br>
-              Banks don't actually give a damn about your suspect's privacy. What they care about is their legal exposure &mdash; and that difference is what separates a detective who can build a financial case from one who spends three weeks waiting on paperwork while the money disappears to the Cayman Islands...<br><br>
-              <em style="color:#93999f;">The most powerful financial investigative tool &mdash; in fiction and in real life &mdash; is almost never the dramatic bank record reveal. It's the gap between what someone earns and how they live.</em>
-            </p>
-            <p style="font-size: 14px; color: #d7dae0; line-height: 1.6;">
-              <strong style="color:#eef0f3;">Q: Can a villain hack parking meters to harvest credit card data?</strong><br><br>
-              Yes, it's absolutely possible &mdash; and it's been done. San Francisco, Los Angeles, Chicago. In several documented cases it ran for months before anyone noticed, because nobody was watching...<br><br>
-              <em style="color:#93999f;">The most realistic element you can put in your fiction isn't a genius hacker in a dark room. It's the six-month gap between when the crime happened and when anyone realized it.</em>
-            </p>
-          </div>
-
           <div style="text-align:center; margin-bottom: 8px;">
             <a href="https://thewritersprecinct.com/hawthorne"
                style="display:inline-block; border: 1.5px solid #c9a24b; color: #e0bc6a; font-family: Arial, sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 10px;">
