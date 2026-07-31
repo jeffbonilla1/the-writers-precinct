@@ -44,7 +44,7 @@ exports.handler = async function(event, context) {
 
           <div style="text-align:center; margin-bottom: 32px;">
             <a href="https://thewritersprecinct.com/CrimeFictionToolkit.pdf"
-               style="display:inline-block; background: linear-gradient(180deg, #e0bc6a, #c9a24b); color: #1a1406; font-family: Arial, sans-serif; font-weight: 700; font-size: 15px; text-decoration: none; padding: 14px 28px; border-radius: 10px;">
+               style="display:inline-block; background-color: #c9a24b; color: #1a1406; font-family: Arial, sans-serif; font-weight: 700; font-size: 15px; text-decoration: none; padding: 14px 28px; border-radius: 10px;">
               Download the Toolkit →
             </a>
           </div>
