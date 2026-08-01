@@ -136,6 +136,12 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
     border: 2px solid var(--gold);
     box-shadow: 0 0 0 6px rgba(201,162,75,0.08), 0 20px 40px rgba(0,0,0,0.5);
     margin-bottom: 16px;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .photo-frame:hover {
+    transform: scale(1.03);
   }
 
   .photo-frame img {
@@ -387,7 +393,7 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
       <span class="soft">It's 3am. The evidence, the sequence, the detail — ask before you write another word.</span>
     </h1>
 
-    <div class="photo-frame">
+    <div class="photo-frame" id="photoFrame">
       <img src="https://thewritersprecinct.com/Detective_Hawthorne.jpg" alt="Detective Dale Hawthorne">
     </div>
 
@@ -405,7 +411,7 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
 
     <div class="toolkit-panel">
       <h3>New to writing crime fiction?</h3>
-      <p>Download our free Crime Writer's Toolkit — a quick-reference guide to get you started.</p>
+      <p>Download our free Crime Writer's Toolkit — a quick-reference guide to get you started, plus a peek at how Hawthorne answers real writer questions.</p>
       <form class="toolkit-form" id="toolkitForm">
         <input type="email" class="toolkit-email" id="toolkitEmail" placeholder="your@email.com" required>
         <button type="submit" class="toolkit-cta">Send Me the Toolkit →</button>
@@ -448,6 +454,19 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
     }
 
     document.getElementById('askCta').addEventListener('click', goToApp);
+
+    document.getElementById('photoFrame').addEventListener('click', () => {
+      const input = document.getElementById('askInput');
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => input.focus(), 400);
+
+      if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'HawthornePhotoClick');
+      }
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'photo_click_scroll', { page: 'hawthorne' });
+      }
+    });
     document.getElementById('askInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
