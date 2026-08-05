@@ -774,9 +774,8 @@ src="https://www.facebook.com/tr?id=444227239359366&ev=PageView&noscript=1"
   <div class="nav-links">
     <a href="#tools">The Tools</a>
     <a href="#toolkit">Writer's Toolkit</a>
-    <a href="#pricing">Pricing</a>
     <a href="#about">About</a>
-    <a href="https://buy.stripe.com/bJe8wPdr1avO6Mj9p6dAk05" class="nav-cta">Get Access</a>
+    <a href="#pricing" class="nav-cta">Pricing</a>
   </div>
 </nav>
 
@@ -1211,7 +1210,13 @@ src="https://www.facebook.com/tr?id=444227239359366&ev=PageView&noscript=1"
           <li>All three response modes</li>
           <li>Cancel anytime — no pressure</li>
         </ul>
-        <a href="#tools" class="bundle-btn bundle-btn-outline">Choose a Tool</a>
+        <button onclick="document.getElementById('single-tool-picker').style.display='flex';this.style.display='none';" class="bundle-btn bundle-btn-primary" style="cursor:pointer;font-family:inherit;width:100%;box-sizing:border-box;border:none;">Choose a Tool</button>
+        <div id="single-tool-picker" style="display:none;flex-direction:column;gap:8px;">
+          <a href="https://buy.stripe.com/cNi00jaeP47q9Yv8l2dAk01" class="bundle-btn bundle-btn-outline" style="font-size:13px;">The Precinct — $9.99/mo →</a>
+          <a href="https://buy.stripe.com/7sYdR94Uv5bu4EbgRydAk02" class="bundle-btn bundle-btn-outline" style="font-size:13px;">The ER — $9.99/mo →</a>
+          <a href="https://buy.stripe.com/cNieVdbiTbzS0nV7gYdAk09" class="bundle-btn bundle-btn-outline" style="font-size:13px;">The Armory — $9.99/mo →</a>
+          <a href="https://buy.stripe.com/8x28wPcmX9rK5IfeJqdAk0a" class="bundle-btn bundle-btn-outline" style="font-size:13px;">The Gavel — $9.99/mo →</a>
+        </div>
       </div>
 
       <!-- FULL MEMBERSHIP (FEATURED) -->
