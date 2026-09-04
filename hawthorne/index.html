@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Writers Precinct — Ask Detective Hawthorne</title>
+<meta name="description" content="Ask a 20-year homicide detective your crime fiction question. Get procedure, jurisdiction, and real-world tactics right — not Googled. First 3 free.">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6BF2F3Y8YZ"></script>
@@ -11,27 +12,17 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-6BF2F3Y8YZ');
-  gtag('config', 'AW-18085846918');
+  const isPreview = window.location.pathname.includes('/v/') || window.location.hostname.includes('usercontent');
+  if (!isPreview) {
+    gtag('config', 'G-6BF2F3Y8YZ');
+    gtag('config', 'AW-18085846918');
+  }
 </script>
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel stub - real pixel injected via GTM on live site -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1312214863949606');
-fbq('track', 'PageView');
+  window.fbq = window.fbq || function(){(window.fbq.q = window.fbq.q || []).push(arguments)};
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -43,485 +34,228 @@ src="https://www.facebook.com/tr?id=1312214863949606&ev=PageView&noscript=1"
 </script>
 <style>
   :root {
-    --bg-deep: #0b0e14;
-    --bg-panel: #12161f;
-    --gold: #c9a24b;
-    --gold-bright: #e0bc6a;
-    --text-main: #eef0f3;
-    --text-dim: #93999f;
-    --tape-yellow: #f2c200;
-    --hairline: rgba(255,255,255,0.08);
+    --bg-deep: #0b0e14; --bg-panel: #12161f; --bg-input: #1a1f2c;
+    --gold: #c9a24b; --gold-bright: #e0bc6a;
+    --text-main: #eef0f3; --text-dim: #93999f; --text-muted: #c7cbd1;
+    --tape-yellow: #f2c200; --hairline: rgba(255,255,255,0.08);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg-deep);
-    color: var(--text-main);
-    font-family: 'Georgia', 'Times New Roman', serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Crime-tape hairline at very top, doubles as brand mark, not decoration */
-  .tape-strip {
-    width: 100%;
-    background: repeating-linear-gradient(
-      -45deg,
-      var(--tape-yellow),
-      var(--tape-yellow) 22px,
-      #111 22px,
-      #111 44px
-    );
-    height: 10px;
-    opacity: 0.9;
-  }
-
-  .wrap {
-    width: 100%;
-    max-width: 560px;
-    padding: 48px 24px 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .eyebrow {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    font-size: 11px;
-    color: var(--gold);
-    margin-bottom: 18px;
-  }
-
-  h1 {
-    font-size: clamp(46px, 11vw, 68px);
-    line-height: 1.08;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 20px;
-  }
-
-  h1 .soft {
-    display: block;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--text-dim);
-    font-size: 0.4em;
-    margin-top: 12px;
-    letter-spacing: 0;
-  }
-
-  .subhead {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 19px;
-    line-height: 1.55;
-    color: #c7cbd1;
-    max-width: 440px;
-    margin-bottom: 34px;
-  }
-
-  .photo-frame {
-    position: relative;
-    width: 168px;
-    height: 168px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--gold);
-    box-shadow: 0 0 0 6px rgba(201,162,75,0.08), 0 20px 40px rgba(0,0,0,0.5);
-    margin-bottom: 16px;
-    cursor: pointer;
-    transition: transform 0.15s;
-  }
-
-  .photo-frame:hover {
-    transform: scale(1.03);
-  }
-
-  .photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(15%) contrast(1.05);
-  }
-
-  .cred-line {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--text-dim);
-    margin-bottom: 40px;
-  }
-
-  .cred-line strong {
-    color: var(--text-main);
-    font-weight: 600;
-  }
-
-  .ask-panel {
-    width: 100%;
-    background: var(--bg-panel);
-    border: 1px solid var(--hairline);
-    border-radius: 14px;
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 24px 48px rgba(0,0,0,0.35);
-  }
-
-  .sample-q {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--gold);
-    text-align: left;
-  }
-
-  .sample-q em {
-    color: #c7cbd1;
-    font-style: italic;
-  }
-
-  .ask-input {
-    width: 100%;
-    background: #1a1f2c;
-    border: 1.5px solid rgba(201,162,75,0.45);
-    border-radius: 10px;
-    padding: 16px;
-    color: var(--text-main);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15px;
-    resize: none;
-    min-height: 64px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .ask-input:focus {
-    outline: none;
-    border-color: var(--gold-bright);
-    box-shadow: 0 0 0 3px rgba(201,162,75,0.15);
-  }
-
-  .ask-input::placeholder {
-    color: #565c64;
-    font-style: italic;
-  }
-
-  .ask-cta {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.01em;
-    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
-    color: #1a1406;
-    border: none;
-    border-radius: 10px;
-    padding: 16px;
-    cursor: pointer;
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,75,0.35); }
-    50% { box-shadow: 0 0 0 8px rgba(201,162,75,0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ask-cta { animation: none; }
-  }
-
-  .fine-print {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 18px;
-  }
-
-  .fine-print strong { color: var(--gold); }
-
-  .divider-or {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 28px 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    width: 100%;
-    max-width: 420px;
-  }
-  .divider-or::before,
-  .divider-or::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--hairline);
-  }
-
-  .toolkit-panel {
-    width: 100%;
-    background: var(--bg-panel);
-    border: 1px solid var(--hairline);
-    border-radius: 14px;
-    padding: 22px;
-    text-align: left;
-  }
-
-  .toolkit-panel h3 {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .toolkit-panel p {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-
-  .toolkit-form {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .toolkit-email {
-    flex: 1;
-    min-width: 160px;
-    background: #1a1f2c;
-    border: 1.5px solid var(--hairline);
-    border-radius: 10px;
-    padding: 14px;
-    color: var(--text-main);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
-  }
-
-  .toolkit-email:focus {
-    outline: none;
-    border-color: var(--gold-bright);
-  }
-
-  .toolkit-cta {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    background: transparent;
-    color: var(--gold-bright);
-    border: 1.5px solid var(--gold);
-    border-radius: 10px;
-    padding: 14px 18px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .toolkit-cta:hover {
-    background: rgba(201,162,75,0.1);
-  }
-
-  .quote-block {
-    margin-top: 30px;
-    max-width: 420px;
-    padding-top: 24px;
-    border-top: 1px solid var(--hairline);
-  }
-
-  .quote-block p {
-    font-style: italic;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #d7dae0;
-    margin-bottom: 10px;
-  }
-
-  .quote-block span {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.03em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-
-  .quote-block + .quote-block {
-    margin-top: 22px;
-    padding-top: 22px;
-    border-top: 1px solid var(--hairline);
-  }
-
-  footer {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    color: #4a4f56;
-    padding-bottom: 28px;
-    letter-spacing: 0.04em;
-  }
-
-  @media (min-width: 900px) {
-    .wrap {
-      max-width: 680px;
-      padding-top: 72px;
-    }
-    .eyebrow { font-size: 13px; }
-    .subhead { font-size: 18px; max-width: 520px; }
-    .photo-frame { width: 200px; height: 200px; }
-    .cred-line { font-size: 15px; }
-    .ask-panel { padding: 28px; }
-    .ask-input { font-size: 17px; min-height: 76px; }
-    .ask-cta { font-size: 18px; padding: 18px; }
-    .fine-print { font-size: 14px; }
-    .quote-block { max-width: 500px; }
-    .quote-block p { font-size: 17px; }
-    .quote-block span { font-size: 13px; }
-  }
+  body { background: var(--bg-deep); color: var(--text-main); font-family: Georgia, Times, serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+  .tape-strip { width: 100%; background: repeating-linear-gradient(-45deg, var(--tape-yellow), var(--tape-yellow) 22px, #111 22px, #111 44px); height: 10px; opacity: 0.9; }
+  .wrap { width: 100%; max-width: 580px; padding: 48px 24px 64px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .eyebrow { font-family: Helvetica Neue, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.22em; font-size: 11px; color: var(--gold); margin-bottom: 18px; }
+  h1 { font-size: clamp(44px, 10vw, 64px); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; }
+  h1 .soft { display: block; font-style: italic; font-weight: 400; color: var(--text-dim); font-size: 0.42em; margin-top: 10px; }
+  .subhead { font-family: Helvetica Neue, Arial, sans-serif; font-size: 18px; line-height: 1.55; color: var(--text-muted); max-width: 440px; margin-bottom: 28px; }
+  .photo-frame { position: relative; width: 168px; height: 168px; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 0 0 6px rgba(201,162,75,0.08), 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 14px; cursor: pointer; transition: transform 0.15s; }
+  .photo-frame:hover { transform: scale(1.03); }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); }
+  .cred-line { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; color: var(--text-dim); margin-bottom: 32px; }
+  .cred-line strong { color: var(--text-main); font-weight: 600; }
+  .ask-panel { width: 100%; background: var(--bg-panel); border: 1px solid var(--hairline); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.35); text-align: left; }
+  .sample-q { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--gold); }
+  .sample-q em { color: var(--text-muted); font-style: italic; }
+  .sample-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .chip { font-family: Helvetica Neue, Arial, sans-serif; font-size: 11px; padding: 6px 10px; border-radius: 20px; background: rgba(201,162,75,0.12); border: 1px solid rgba(201,162,75,0.25); color: var(--gold-bright); cursor: pointer; }
+  .ask-input { width: 100%; background: var(--bg-input); border: 1.5px solid rgba(201,162,75,0.45); border-radius: 10px; padding: 16px; color: var(--text-main); font-family: Helvetica Neue, Arial, sans-serif; font-size: 15px; resize: none; min-height: 72px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .ask-input:focus { outline: none; border-color: var(--gold-bright); box-shadow: 0 0 0 3px rgba(201,162,75,0.15); }
+  .ask-input::placeholder { color: #565c64; font-style: italic; }
+  .ask-cta { font-family: Helvetica Neue, Arial, sans-serif; font-weight: 700; font-size: 16px; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: #1a1406; border: none; border-radius: 10px; padding: 16px; cursor: pointer; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,162,75,0.35)} 50%{box-shadow:0 0 0 8px rgba(201,162,75,0)} }
+  .fine-print { font-family: Helvetica Neue, Arial, sans-serif; font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+  .trust-bar { width: 100%; margin-top: 40px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
+  .trust-eyebrow { font-family: Helvetica Neue, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 10px; color: var(--gold); text-align: center; }
+  .trust-item { background: rgba(255,255,255,0.03); border: 1px solid var(--hairline); border-radius: 10px; padding: 16px; }
+  .trust-item em { font-size: 14px; line-height: 1.5; color: var(--text-muted); display: block; margin-bottom: 8px; }
+  .trust-name { font-family: Helvetica Neue, Arial, sans-serif; font-size: 11px; color: var(--text-dim); text-transform: uppercase; }
+  .bio-panel { width: 100%; margin-top: 48px; background: linear-gradient(180deg, rgba(201,162,75,0.08), rgba(201,162,75,0.02)); border: 1px solid rgba(201,162,75,0.15); border-radius: 12px; padding: 24px; text-align: left; }
+  .bio-eyebrow { font-family: Helvetica Neue, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 10px; color: var(--gold); margin-bottom: 12px; }
+  .bio-panel h3 { font-size: 22px; line-height: 1.2; margin-bottom: 12px; }
+  .bio-panel p { font-family: Helvetica Neue, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 10px; }
+  .bio-credentials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .bio-tag { font-family: Helvetica Neue, Arial, sans-serif; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 10px; border-radius: 4px; background: rgba(201,162,75,0.15); color: var(--gold-bright); border: 1px solid rgba(201,162,75,0.25); }
+  .case-teaser { width: 100%; margin-top: 44px; display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  .case-card { background: var(--bg-panel); border: 1px solid var(--hairline); border-radius: 10px; padding: 16px; }
+  .case-q { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; line-height: 1.4; }
+  .case-a { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 8px; }
+  .case-link { font-family: Helvetica Neue, Arial, sans-serif; font-size: 11px; color: var(--gold); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .case-link:hover { color: var(--gold-bright); text-decoration: underline; }
+  .case-cta-row { margin-top: 4px; }
+  .divider-or { font-family: Helvetica Neue, Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin: 32px 0 24px; position: relative; }
+  .divider-or::before, .divider-or::after { content: ''; position: absolute; top: 50%; width: 60px; height: 1px; background: var(--hairline); }
+  .divider-or::before { right: 100%; margin-right: 16px; } .divider-or::after { left: 100%; margin-left: 16px; }
+  .toolkit-panel { width: 100%; background: #12151e; border: 1px solid var(--hairline); border-radius: 12px; padding: 22px; text-align: left; }
+  .toolkit-panel h3 { font-size: 18px; margin-bottom: 8px; }
+  .toolkit-panel p { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 14px; }
+  .toolkit-form { display: flex; gap: 8px; }
+  .toolkit-email { flex: 1; background: var(--bg-input); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px; color: var(--text-main); font-family: Helvetica Neue, Arial, sans-serif; font-size: 14px; }
+  .toolkit-cta { font-family: Helvetica Neue, Arial, sans-serif; font-weight: 700; font-size: 13px; background: var(--gold); color: #1a1406; border: none; border-radius: 8px; padding: 12px 16px; cursor: pointer; white-space: nowrap; }
+  .mini-pricing { width: 100%; margin-top: 40px; background: var(--bg-panel); border: 1px solid var(--hairline); border-radius: 12px; padding: 20px; text-align: center; }
+  .mini-pricing h4 { font-family: Helvetica Neue, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 11px; color: var(--gold); margin-bottom: 8px; }
+  .mini-pricing .price { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  .mini-pricing .price span { font-size: 14px; font-weight: 400; color: var(--text-dim); }
+  .mini-pricing p { font-family: Helvetica Neue, Arial, sans-serif; font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+  .footer-pricing { margin-top: 24px; font-family: Helvetica Neue, Arial, sans-serif; font-size: 12px; color: var(--text-dim); text-align: center; }
+  footer { margin-top: 48px; font-family: Helvetica Neue, Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); opacity: 0.6; }
 </style>
 </head>
 <body>
+<div class="tape-strip"></div>
+<div class="wrap">
+  <div class="eyebrow">Expert research tools for thriller & genre fiction writers</div>
+  <h1>Ask Detective Hawthorne<span class="soft">Your interrogation room. On demand.</span></h1>
+  <p class="subhead">Get answers from a 20-year homicide detective, not a search engine. How it really happens, when it happens, and why cops do it that way.</p>
 
-  <div class="tape-strip"></div>
+  <div class="photo-frame" id="photoFrame">
+    <img src="Detective_Hawthorne.jpg" alt="Detective Dale Hawthorne">
+  </div>
+  <div class="cred-line"><strong>Det. Dale Hawthorne</strong> — 20 Years Homicide. Ask him anything.</div>
 
-  <div class="wrap">
-    <a href="https://thewritersprecinct.com" class="eyebrow" style="text-decoration: none; cursor: pointer;">The Writers Precinct</a>
-
-    <h1>
-      You're guessing.<br>Don't.
-      <span class="soft">It's 3am. The evidence, the sequence, the detail — ask before you write another word.</span>
-    </h1>
-
-    <div class="photo-frame" id="photoFrame">
-      <img src="https://thewritersprecinct.com/Detective_Hawthorne.jpg" alt="Detective Dale Hawthorne">
+  <div class="ask-panel">
+    <div class="sample-q">→ Try: <em>"Can a bad guy survive gunfire by hiding underwater?"</em></div>
+    <div class="sample-chips">
+      <span class="chip" data-q="How long can detectives legally hold someone before Mirandizing?">Miranda timing</span>
+      <span class="chip" data-q="What does a homicide interrogation room actually look and smell like?">Interrogation room</span>
+      <span class="chip" data-q="Can you really trace a burner phone?">Burner phone</span>
     </div>
+    <textarea id="askInput" class="ask-input" placeholder="Ask about your crime scene... e.g., What happens if my detective bluffs about having DNA?"></textarea>
+    <button id="askCta" class="ask-cta">Ask Detective Hawthorne — Free →</button>
+    <div class="fine-print"><strong>First 3 questions free.</strong> No account needed. Ask like you'd hesitate to type into Google.</div>
+  </div>
 
-    <div class="cred-line"><strong>Det. Dale Hawthorne</strong> — 20 Years Homicide. Ask him anything.</div>
-
-    <div class="ask-panel">
-      <div class="sample-q">→ Try: <em>"Can a bad guy survive gunfire by hiding underwater?"</em></div>
-      <textarea id="askInput" class="ask-input" placeholder="Ask about your crime scene..."></textarea>
-      <button id="askCta" class="ask-cta">Ask Detective Hawthorne — Free →</button>
+  <div class="trust-bar">
+    <div class="trust-eyebrow">Trusted by writers and law enforcement — the reason Eva stayed 37 minutes</div>
+    <div class="trust-item">
+      <em>"The accuracy is there. The Garrity warning, the proffer session, jurisdiction-specific procedure — this is what writers need to get right."</em>
+      <span class="trust-name">— Will Pickens, FBI Consultant</span>
     </div>
-
-    <div class="fine-print"><strong>First 3 questions free.</strong> No account needed.</div>
-
-    <div class="divider-or">or</div>
-
-    <div class="toolkit-panel">
-      <h3>New to writing crime fiction?</h3>
-      <p>Download our free Crime Writer's Toolkit — a quick-reference guide to get you started, plus a peek at how Hawthorne answers real writer questions.</p>
-      <form class="toolkit-form" id="toolkitForm">
-        <input type="email" class="toolkit-email" id="toolkitEmail" placeholder="your@email.com" required>
-        <button type="submit" class="toolkit-cta">Send Me the Toolkit →</button>
-      </form>
+    <div class="trust-item">
+      <em>"Pursuit policies, court procedures, federal laws, equipment, vehicles — The Writers Precinct covers the full spectrum."</em>
+      <span class="trust-name">— Charles Moss, CHP (Ret.)</span>
     </div>
-
-    <div class="quote-block">
-      <p>"The Precinct is exactly the kind of research tool I needed to bring real authenticity to my novels."</p>
-      <span>— Beth Crawford, Thriller Author</span>
-    </div>
-    <div class="quote-block">
-      <p>"The accuracy is there. The Garrity warning, the proffer session, jurisdiction-specific procedure — this is what writers need to get right."</p>
-      <span>— Will Pickens, FBI Consultant</span>
-    </div>
-    <div class="quote-block">
-      <p>"This is the real deal. Pursuit policies, court procedures, federal laws, equipment, vehicles — The Writers Precinct covers the full spectrum with clear, realistic answers."</p>
-      <span>— Charles Moss, California Highway Patrol (Ret.)</span>
+    <div class="trust-item">
+      <em>"Exactly the kind of research tool I needed to bring real authenticity to my novels."</em>
+      <span class="trust-name">— Beth Crawford, Thriller Author</span>
     </div>
   </div>
 
-  <footer>THE WRITERS PRECINCT &nbsp;·&nbsp; WRITE LIKE YOU'VE BEEN THERE</footer>
+  <div class="bio-panel">
+    <div class="bio-eyebrow">Why This Exists</div>
+    <h3>Built by someone who actually got the call.</h3>
+    <p>A few years back, deep in research for a novel — undetectable poisons, covert weapons, secret tunnels under the U.S. Capitol — I got a call from a D.C. area code. It was Special Agent Smith, Capitol Police Threat Assessment Task Force.</p>
+    <p>That's the moment The Writers Precinct was born. Retired law enforcement. #1 Amazon Hot New Release author. Built on real cases, not Wikipedia.</p>
+    <div class="bio-credentials">
+      <span class="bio-tag">Retired Law Enforcement</span>
+      <span class="bio-tag">#1 Amazon Author</span>
+      <span class="bio-tag">6 Optioned Series</span>
+    </div>
+  </div>
 
-  <script>
-    const APP_URL = 'https://app.asktheprecinct.com';
+  <div class="case-teaser">
+    <div class="trust-eyebrow" style="margin-bottom:12px;">From the case files — then ask your own</div>
+    <div class="case-card">
+      <div class="case-q">Q: Can my suspect hide underwater to survive gunfire?</div>
+      <div class="case-a">Hawthorne: You can hide, you can't breathe. 9mm loses lethality at ~5 feet of water, but your guy is making bubbles, noise, and he'll have to surface. K-9 will be waiting at the bank. Here's how I'd write it...</div>
+      <a href="https://thewritersprecinct.com/case-files/" class="case-link">Read full answer →</a>
+    </div>
+    <div class="case-card">
+      <div class="case-q">Q: How long can I legally hold someone before Mirandizing?</div>
+      <div class="case-a">Hawthorne: The clock isn't Miranda, it's the 4th Amendment. You get reasonable detention for investigation, then custody triggers Miranda. In CA, that custody moment is what defense attacks. Here's the line I use...</div>
+      <a href="https://thewritersprecinct.com/case-files/" class="case-link">Read full answer →</a>
+    </div>
+    <div class="case-cta-row">
+      <button class="ask-cta" style="width:100%; animation:none; margin-top:8px; font-size:14px;" onclick="document.getElementById('askInput').focus(); document.getElementById('askInput').scrollIntoView({behavior:'smooth', block:'center'});">Your turn — ask Hawthorne →</button>
+    </div>
+  </div>
 
-    function goToApp() {
-      const question = document.getElementById('askInput').value.trim();
-      const url = new URL(APP_URL);
-      if (question) url.searchParams.set('q', encodeURIComponent(question));
-      url.searchParams.set('format', 'veteran');
-      // Forward any Meta click id / UTM params so downstream tracking still fires
-      const incoming = new URLSearchParams(window.location.search);
-      incoming.forEach((value, key) => url.searchParams.set(key, value));
+  <div class="mini-pricing">
+    <h4>After your 3 free</h4>
+    <div class="price">$9.99 <span>/ single tool · or $19.99 Full Precinct Bundle</span></div>
+    <p>One toolkit per tool. Every question answered. Cancel anytime. Built for the scene you're writing tonight.</p>
+    <button class="ask-cta" style="width:100%; animation:none;" onclick="goToApp()">Start Asking Free →</button>
+  </div>
 
-      // Track the landing-page click-through distinctly from the app's own
-      // 'Lead' event (which fires only once a question is actually submitted)
-      if (typeof fbq !== 'undefined') {
-        fbq('trackCustom', 'HawthorneLandingClick', { has_question: !!question });
-      }
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'landing_cta_click', {
-          page: 'hawthorne',
-          has_question: !!question
-        });
-      }
+  <div class="divider-or">or get the free toolkit</div>
 
-      window.location.href = url.toString();
-    }
+  <div class="toolkit-panel">
+    <h3>New to crime writing?</h3>
+    <p>Download the Crime Writer's Toolkit — quick-reference for interrogation, custody, and procedure, plus real Hawthorne Q&As.</p>
+    <form class="toolkit-form" id="toolkitForm">
+      <input type="email" class="toolkit-email" id="toolkitEmail" placeholder="your@email.com" required>
+      <button type="submit" class="toolkit-cta">Send It →</button>
+    </form>
+  </div>
 
-    document.getElementById('askCta').addEventListener('click', goToApp);
+  <div class="footer-pricing"><strong>Free to try</strong> — first 3 questions on us. Then $9.99/mo or $19.99 bundle. No search history to explain.</div>
+  <footer>THE WRITERS PRECINCT · WRITE LIKE YOU'VE BEEN THERE — asktheprecinct.com</footer>
+</div>
 
-    document.getElementById('photoFrame').addEventListener('click', () => {
-      const input = document.getElementById('askInput');
-      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => input.focus(), 400);
+<script>
+  const APP_URL = 'https://app.asktheprecinct.com';
 
-      if (typeof fbq !== 'undefined') {
-        fbq('trackCustom', 'HawthornePhotoClick');
-      }
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'photo_click_scroll', { page: 'hawthorne' });
-      }
-    });
-    document.getElementById('askInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        goToApp();
-      }
-    });
-
-    // Toolkit email capture
-    const toolkitForm = document.getElementById('toolkitForm');
-    if (toolkitForm) {
-      toolkitForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('toolkitEmail').value.trim();
-        const btn = toolkitForm.querySelector('.toolkit-cta');
-        const originalText = btn.textContent;
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-
-        try {
-          const res = await fetch('/.netlify/functions/submit-toolkit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email })
-          });
-          const data = await res.json();
-
-          if (data.success) {
-            if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'crime_fiction_toolkit' });
-            if (typeof gtag !== 'undefined') gtag('event', 'toolkit_signup', { page: 'hawthorne' });
-            toolkitForm.innerHTML = '<p style="color:#e0bc6a; font-family: Helvetica Neue, Arial, sans-serif; font-size:14px;">Check your inbox — the toolkit\'s on its way.</p>';
-          } else {
-            btn.textContent = originalText;
-            btn.disabled = false;
-          }
-        } catch (err) {
-          btn.textContent = originalText;
-          btn.disabled = false;
+  function goToApp(prefillQuestion) {
+    const q = (prefillQuestion || document.getElementById('askInput').value.trim());
+    const url = new URL(APP_URL);
+    if (q) url.searchParams.set('q', q);
+    url.searchParams.set('format', 'veteran');
+    url.searchParams.set('utm_source', 'hawthorne_mini');
+    url.searchParams.set('utm_medium', 'landing');
+    const incoming = new URLSearchParams(window.location.search);
+    incoming.forEach((value, key) => {
+      if (['utm_campaign','utm_content','fbclid','gclid','msclkid'].includes(key) || key.startsWith('utm_')) {
+        if (!(key === 'utm_source' && url.searchParams.has('utm_source')) && !(key === 'utm_medium' && url.searchParams.has('utm_medium'))) {
+           url.searchParams.set(key, value);
+        } else if (key === 'utm_campaign' || key === 'utm_content') {
+           url.searchParams.set(key, value);
         }
-      });
-    }
-  </script>
+      } else if (key === 'q' && !q) {
+        url.searchParams.set(key, value);
+      }
+    });
+    if (typeof fbq !== 'undefined') fbq('trackCustom', 'HawthorneLandingClick', { has_question: !!q });
+    if (typeof gtag !== 'undefined') gtag('event', 'landing_cta_click', { page: 'hawthorne_mini', has_question: !!q });
+    window.location.href = url.toString();
+  }
 
+  document.getElementById('askCta').addEventListener('click', () => goToApp());
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const q = chip.getAttribute('data-q');
+      document.getElementById('askInput').value = q;
+      goToApp(q);
+    });
+  });
+  document.getElementById('photoFrame').addEventListener('click', () => {
+    const input = document.getElementById('askInput');
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => input.focus(), 400);
+  });
+  document.getElementById('askInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); goToApp(); }
+  });
+
+  const toolkitForm = document.getElementById('toolkitForm');
+  if (toolkitForm) {
+    toolkitForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('toolkitEmail').value.trim();
+      const btn = toolkitForm.querySelector('.toolkit-cta');
+      const orig = btn.textContent;
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      try {
+        const res = await fetch('/.netlify/functions/submit-toolkit', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'hawthorne_mini_v8' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'crime_fiction_toolkit_mini' });
+          if (typeof gtag !== 'undefined') gtag('event', 'toolkit_signup', { page: 'hawthorne_mini' });
+          toolkitForm.innerHTML = '<p style="color:#e0bc6a; font-family: Helvetica Neue, Arial, sans-serif; font-size:14px;">Check your inbox — toolkit is on its way. Then ask Hawthorne anything.</p>';
+        } else { btn.textContent = orig; btn.disabled = false; }
+      } catch { btn.textContent = orig; btn.disabled = false; }
+    });
+  }
+</script>
 </body>
 </html>
