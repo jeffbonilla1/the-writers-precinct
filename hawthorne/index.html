@@ -75,12 +75,13 @@
   .bio-credentials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .bio-tag { font-family: Helvetica Neue, Arial, sans-serif; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 10px; border-radius: 4px; background: rgba(201,162,75,0.15); color: var(--gold-bright); border: 1px solid rgba(201,162,75,0.25); }
   .case-teaser { width: 100%; margin-top: 44px; display: flex; flex-direction: column; gap: 12px; text-align: left; }
-  .case-card { background: var(--bg-panel); border: 1px solid var(--hairline); border-radius: 10px; padding: 16px; }
-  .case-q { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; line-height: 1.4; }
-  .case-a { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 8px; }
+  .case-card { background: var(--panel); border: 1px solid var(--hair); border-radius: 10px; padding: 16px; }
+  .case-q { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .case-a { font-family: Helvetica Neue, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--muted); margin-bottom: 8px; }
   .case-link { font-family: Helvetica Neue, Arial, sans-serif; font-size: 11px; color: var(--gold); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
   .case-link:hover { color: var(--gold-bright); text-decoration: underline; }
   .case-cta-row { margin-top: 4px; }
+  .bio-tag { font-family: Helvetica Neue, Arial, sans-serif; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 10px; border-radius: 4px; background: rgba(201,162,75,0.15); color: var(--gold-bright); border: 1px solid rgba(201,162,75,0.25); }
   .divider-or { font-family: Helvetica Neue, Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin: 32px 0 24px; position: relative; }
   .divider-or::before, .divider-or::after { content: ''; position: absolute; top: 50%; width: 60px; height: 1px; background: var(--hairline); }
   .divider-or::before { right: 100%; margin-right: 16px; } .divider-or::after { left: 100%; margin-left: 16px; }
@@ -151,17 +152,18 @@
     </div>
   </div>
 
+
   <div class="case-teaser">
     <div class="trust-eyebrow" style="margin-bottom:12px;">From the case files — then ask your own</div>
     <div class="case-card">
       <div class="case-q">Q: Can my suspect hide underwater to survive gunfire?</div>
-      <div class="case-a">Hawthorne: You can hide, you can't breathe. 9mm loses lethality at ~5 feet of water, but your guy is making bubbles, noise, and he'll have to surface. K-9 will be waiting at the bank. Here's how I'd write it...</div>
-      <a href="https://thewritersprecinct.com/case-files/" class="case-link">Read full answer →</a>
+      <div class="case-a">Hawthorne: You can hide, you can't breathe. 9mm loses lethality at ~5 feet of water, but your guy is making bubbles, noise, and he'll have to surface. K-9 will be waiting at the bank...</div>
+      <a href="/research/underwater-gunfire.html" class="case-link">Read full answer →</a>
     </div>
     <div class="case-card">
       <div class="case-q">Q: How long can I legally hold someone before Mirandizing?</div>
-      <div class="case-a">Hawthorne: The clock isn't Miranda, it's the 4th Amendment. You get reasonable detention for investigation, then custody triggers Miranda. In CA, that custody moment is what defense attacks. Here's the line I use...</div>
-      <a href="https://thewritersprecinct.com/case-files/" class="case-link">Read full answer →</a>
+      <div class="case-a">Hawthorne: The clock isn't Miranda, it's the 4th Amendment. You get reasonable detention for investigation, then custody triggers Miranda. In CA, that custody moment is what defense attacks...</div>
+      <a href="/research/miranda-hold-time.html" class="case-link">Read full answer →</a>
     </div>
     <div class="case-cta-row">
       <button class="ask-cta" style="width:100%; animation:none; margin-top:8px; font-size:14px;" onclick="document.getElementById('askInput').focus(); document.getElementById('askInput').scrollIntoView({behavior:'smooth', block:'center'});">Your turn — ask Hawthorne →</button>
